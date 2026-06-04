@@ -1,0 +1,33 @@
+{
+  "allowSyntheticDefaultImports": true,
+  "alwaysStrict": true,
+  "charset": "utf8",
+  "esModuleInterop": true,
+  "forceConsistentCasingInFileNames": true,
+  "generateCpuProfile": "profile.cpuprofile",
+  "importsNotUsedAsValues": 0,
+  "jsx": 1,
+  "jsxFactory": "`React.createElement`",
+  "jsxFragmentFactory": "React.Fragment",
+  "jsxImportSource": "react",
+  "maxNodeModuleJsDepth": 0,
+  "newLine": "lf",
+  "noUncheckedSideEffectImports": true,
+  "pretty": true,
+  "reactNamespace": "`React`",
+  "resolveJsonModule": true,
+  "target": 12,
+  "tsBuildInfoFile": ".tsbuildinfo",
+
+  "strict": true,
+
+  // These options are enabled by "strict": true and are listed explicitly to show TypeScript's strict-mode expansion.
+  "noImplicitAny": true,
+  "noImplicitThis": true,
+  "strictBindCallApply": true,
+  "strictBuiltinIteratorReturn": true,
+  "strictFunctionTypes": true,
+  "strictNullChecks": true,
+  "strictPropertyInitialization": true,
+  "useUnknownInCatchVariables": true
+}
