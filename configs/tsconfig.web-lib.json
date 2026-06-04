@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.web.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": true,
+    "allowImportingTsExtensions": false
+  }
+}
