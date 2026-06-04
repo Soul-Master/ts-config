@@ -1,0 +1,30 @@
+{
+  "name": "@soul_master/ts-config",
+  "version": "0.1.0",
+  "description": "Common/Shared Strictest by default TypeScript configs",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "./*.json",
+    "./README.md"
+  ],
+  "exclude": [
+    "./tsconfig.default.jsonc"
+  ],
+  "peerDependencies": {
+    "typescript": ">=6.0.0"
+  },
+  "dependencies": {
+    "@types/node": "~24.13.0"
+  },
+  "exports": {
+    "./base.json": "./tsconfig.base.json",
+    "./node.json": "./tsconfig.node24.json",
+    "./node-lib.json": "./tsconfig.node-lib.json",
+    "./node20.json": "./tsconfig.node20.json",
+    "./web.json": "./tsconfig.web.json",
+    "./web-lib.json": "./tsconfig.web-lib.json"
+  }
+}

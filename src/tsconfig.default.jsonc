@@ -15,7 +15,6 @@
   "noUncheckedSideEffectImports": true,
   "pretty": true,
   "reactNamespace": "`React`",
-  "resolveJsonModule": true,
   "target": 12,
   "tsBuildInfoFile": ".tsbuildinfo",
 

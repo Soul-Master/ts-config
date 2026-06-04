@@ -1,32 +1,18 @@
 {
-  "name": "@soul_master/ts-config",
-  "version": "0.1.0",
-  "description": "Common/Shared Strictest by default TypeScript configs",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "./configs/*.json"
+  "name": "ts-config-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "src",
+    "test/*"
   ],
-  "exclude": [
-    "./configs/tsconfig.default.json"
-  ],
-  "peerDependencies": {
-    "typescript": ">=6.0.0"
-  },
-  "exports": {
-    "./base.json": "./configs/tsconfig.base.json",
-    "./node.json": "./configs/tsconfig.node24.json",
-    "./node-lib.json": "./configs/tsconfig.node-lib.json",
-    "./node20.json": "./configs/tsconfig.node20.json",
-    "./web.json": "./configs/tsconfig.web.json",
-    "./web-lib.json": "./configs/tsconfig.web-lib.json"
-  },
-  "dependencies": {
-    "@types/node": "~24.13.0"
-  },
   "scripts": {
-    "gen:default": "node ./scripts/generate-default-config.mts ./configs/tsconfig.default.jsonc"
+    "clean": "git clean -dfx",
+    "start": "npm install && npm test",
+    "test": "npm run test --workspaces --if-present",
+    "gen:default": "node ./scripts/generate-default-config.mts ./src/tsconfig.default.jsonc"
+  },
+  "devDependencies": {
+    "typescript": ">=6.0.0"
   }
 }

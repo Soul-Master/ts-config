@@ -1,0 +1,4 @@
+{
+  "extends": "../../src/tsconfig.node24.json",
+  "include": ["src/**/*.ts", "src/**/*.json"]
+}

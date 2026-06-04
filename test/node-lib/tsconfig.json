@@ -1,0 +1,8 @@
+{
+  "extends": "../../src/tsconfig.node-lib.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "../../.tmp/test-node-lib"
+  },
+  "include": ["src/**/*.ts"]
+}
