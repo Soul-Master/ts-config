@@ -10,6 +10,9 @@
     "clean": "git clean -dfx",
     "start": "npm install && npm test",
     "test": "npm run test --workspaces --if-present",
+    "test:lts": "npm run test --workspace @soul_master/ts-config-test-node && npm run test --workspace @soul_master/ts-config-test-node-lib && npm run test --workspace @soul_master/ts-config-test-web && npm run test --workspace @soul_master/ts-config-test-web-lib",
+    "test:node20": "npm run test --workspace @soul_master/ts-config-test-node20",
+    "pack": "node ./scripts/pack.mts",
     "gen:default": "node ./scripts/generate-default-config.mts ./src/tsconfig.default.jsonc"
   },
   "devDependencies": {

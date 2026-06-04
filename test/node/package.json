@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "pretest": "node -e \"console.log(`Testing ${process.env.npm_package_name}`)\"",
+    "pretest": "node -e \"console.log('Testing ' + process.env.npm_package_name)\"",
     "test": "tsc -p ."
   }
 }

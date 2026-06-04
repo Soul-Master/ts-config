@@ -2,7 +2,7 @@
   "name": "@soul_master/ts-config-test-node20",
   "private": true,
   "scripts": {
-    "pretest": "node -e \"console.log(`Testing ${process.env.npm_package_name}`)\"",
+    "pretest": "node -e \"console.log('Testing ' + process.env.npm_package_name)\"",
     "test": "tsc -p ."
   }
 }
