@@ -6,6 +6,7 @@ type JsonPrimitive = string | number | boolean | null;
 type JsonValue = JsonPrimitive | JsonValue[] | { [key: string]: JsonValue };
 type CompilerOptionDeclaration = {
   name: string;
+  type?: unknown;
   defaultValueDescription?: unknown;
   strictFlag?: boolean;
 };
@@ -15,22 +16,62 @@ const optionDeclarations = (
   ts as typeof ts & { optionDeclarations: CompilerOptionDeclaration[] }
 ).optionDeclarations;
 
-function normalizeDefaultValue(value: unknown): JsonValue | undefined {
+function getEnumDefaultValue(
+  option: CompilerOptionDeclaration,
+  value: unknown
+): string | undefined {
+  if (!(option.type instanceof Map)) {
+    return undefined;
+  }
+
+  for (const [enumName, enumValue] of option.type.entries()) {
+    if (enumValue === value && typeof enumName === 'string') {
+      return enumName;
+    }
+  }
+
+  return undefined;
+}
+
+function normalizeDefaultString(value: string): string {
+  if (value.length > 1 && value.startsWith('`') && value.endsWith('`')) {
+    return value.slice(1, -1);
+  }
+
+  return value;
+}
+
+function normalizeDefaultValue(
+  option: CompilerOptionDeclaration,
+  value: unknown
+): JsonValue | undefined {
   if (value === undefined) return undefined;
   if (value === false) return undefined;
   if (value === null) return null;
 
+  const enumValue = getEnumDefaultValue(option, value);
+
+  if (enumValue !== undefined) {
+    return enumValue;
+  }
+
   if (
-    typeof value === 'string' ||
-    typeof value === 'number' ||
     typeof value === 'boolean'
   ) {
     return value;
   }
 
+  if (typeof value === 'string') {
+    return normalizeDefaultString(value);
+  }
+
+  if (typeof value === 'number') {
+    return value;
+  }
+
   if (Array.isArray(value)) {
     return value
-      .map((item) => normalizeDefaultValue(item))
+      .map((item) => normalizeDefaultValue(option, item))
       .filter((item): item is JsonValue => item !== undefined);
   }
 
@@ -38,7 +79,7 @@ function normalizeDefaultValue(value: unknown): JsonValue | undefined {
     const maybeMessage = value as { message?: unknown; code?: unknown };
 
     if (typeof maybeMessage.message === 'string') {
-      return maybeMessage.message;
+      return normalizeDefaultString(maybeMessage.message);
     }
 
     if (
@@ -61,14 +102,14 @@ function getDefaultForOption(
   const optionName = option.name as keyof ts.CompilerOptions;
 
   if (Object.hasOwn(compilerDefaults, optionName)) {
-    return normalizeDefaultValue(compilerDefaults[optionName]);
+    return normalizeDefaultValue(option, compilerDefaults[optionName]);
   }
 
   if (typeof option.defaultValueDescription === 'object') {
     return undefined;
   }
 
-  return normalizeDefaultValue(option.defaultValueDescription);
+  return normalizeDefaultValue(option, option.defaultValueDescription);
 }
 
 function sortJsonValue(value: JsonValue): JsonValue {
