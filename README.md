@@ -1,4 +1,4 @@
-# @soul-master/ts-config
+# @soul_master/ts-config
 
 Shared strict TypeScript configs for Node.js, Vite web apps, and libraries.
 
@@ -7,7 +7,7 @@ The default supported ECMAScript version is ES2024, and the default Node.js targ
 ## Install
 
 ```sh
-npm install --save-dev typescript @soul-master/ts-config
+npm install --save-dev typescript @soul_master/ts-config
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ Create a `tsconfig.json` in your project and extend one of the exported configs.
 
 ```json
 {
-  "extends": "@soul-master/ts-config/node.json",
+  "extends": "@soul_master/ts-config/node.json",
   "include": ["src/**/*.ts"]
 }
 ```
@@ -29,7 +29,7 @@ Use the base config when you want only the shared strict defaults.
 
 ```json
 {
-  "extends": "@soul-master/ts-config/base.json"
+  "extends": "@soul_master/ts-config/base.json"
 }
 ```
 
@@ -41,7 +41,7 @@ Use `node.json` for Node.js 24 projects that run TypeScript with Node's native t
 
 ```json
 {
-  "extends": "@soul-master/ts-config/node.json",
+  "extends": "@soul_master/ts-config/node.json",
   "include": ["src/**/*.ts"]
 }
 ```
@@ -60,7 +60,7 @@ Use `node20.json` when the project targets Node.js 20 specifically.
 
 ```json
 {
-  "extends": "@soul-master/ts-config/node20.json",
+  "extends": "@soul_master/ts-config/node20.json",
   "include": ["src/**/*.ts"]
 }
 ```
@@ -71,7 +71,7 @@ Use `node-lib.json` for Node.js packages that should emit declaration files.
 
 ```json
 {
-  "extends": "@soul-master/ts-config/node-lib.json",
+  "extends": "@soul_master/ts-config/node-lib.json",
   "include": ["src/**/*.ts"]
 }
 ```
@@ -84,7 +84,7 @@ Use `web.json` for web apps without adding framework-specific types.
 
 ```json
 {
-  "extends": "@soul-master/ts-config/web.json",
+  "extends": "@soul_master/ts-config/web.json",
   "include": ["src/**/*.ts", "src/**/*.tsx", "vite-env.d.ts"]
 }
 ```
@@ -103,7 +103,7 @@ Use `web-lib.json` for browser libraries that should emit declaration files.
 
 ```json
 {
-  "extends": "@soul-master/ts-config/web-lib.json",
+  "extends": "@soul_master/ts-config/web-lib.json",
   "include": ["src/**/*.ts"]
 }
 ```
