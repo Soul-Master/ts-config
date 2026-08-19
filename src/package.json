@@ -1,6 +1,6 @@
 {
   "name": "@soul_master/ts-config",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Common/Shared Strictest by default TypeScript configs",
   "license": "MIT",
   "publishConfig": {
