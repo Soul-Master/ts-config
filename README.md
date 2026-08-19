@@ -110,6 +110,19 @@ Use `web-lib.json` for browser libraries that should emit declaration files.
 
 This config extends the web config and enables declaration-only output.
 
+### Web Worker
+
+Use `worker.json` for Web Workers, Service Workers, and other worker contexts.
+
+```json
+{
+  "extends": "@soul-master/ts-config/worker.json",
+  "include": ["src/**/*.ts"]
+}
+```
+
+This config includes Web Worker APIs and Vite-friendly bundler module resolution without exposing browser DOM globals such as `document` and `window`.
+
 ## Notes
 
 Library configs disable `allowImportingTsExtensions` because they emit declarations. Runtime-focused configs keep `noEmit` enabled by default.
