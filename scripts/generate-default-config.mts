@@ -176,6 +176,22 @@ function stringifyCompilerOptions(
   return `${lines.join('\n')}\n`;
 }
 
+function validateCompilerOptions(compilerOptions: Record<string, JsonValue>): void {
+  const validation = ts.convertCompilerOptionsFromJson(compilerOptions, process.cwd());
+
+  if (validation.errors.length === 0) {
+    return;
+  }
+
+  const host: ts.FormatDiagnosticsHost = {
+    getCanonicalFileName: (fileName) => fileName,
+    getCurrentDirectory: process.cwd,
+    getNewLine: () => '\n',
+  };
+
+  throw new Error(ts.formatDiagnostics(validation.errors, host));
+}
+
 const compilerDefaults = ts.getDefaultCompilerOptions();
 const compilerOptions: Record<string, JsonValue> = {};
 const strictOptions: string[] = [];
@@ -193,6 +209,8 @@ for (const option of optionDeclarations) {
 }
 
 const result = sortJsonValue(compilerOptions) as Record<string, JsonValue>;
+
+validateCompilerOptions(result);
 
 fs.writeFileSync(outputFile, stringifyCompilerOptions(result, strictOptions));
 

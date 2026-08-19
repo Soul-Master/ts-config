@@ -25,6 +25,7 @@
     "./node-lib.json": "./tsconfig.node-lib.json",
     "./node20.json": "./tsconfig.node20.json",
     "./web.json": "./tsconfig.web.json",
-    "./web-lib.json": "./tsconfig.web-lib.json"
+    "./web-lib.json": "./tsconfig.web-lib.json",
+    "./worker.json": "./tsconfig.worker.json"
   }
 }
